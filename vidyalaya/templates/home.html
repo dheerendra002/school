@@ -6,21 +6,130 @@
       rel="stylesheet" media="screen">
     <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
     <script src="{% static 'js/angular.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script>
+      function unhidez(id) {
+        $(document).ready(function() {
+        var arr = ['#homeView', '#upcomingEventsView', '#promotionsView', '#aboutView'];
+        for (var i = 0; i < arr.length; i++) {
+          if ('#' + id == arr[i]) {
+              $(arr[i]).show();
+          } else {
+              $(arr[i]).hide();
+          }
+        }
+      });
+
+      }
+
+      function inProgress() {
+        alert("In Progress!");
+      }
+
+    </script>
+    <style>
+    td {
+      padding: 20px;
+    }
+    </style>
 </head>
 
 
-<body ng-app="myApp" ng-controller="MyController">
-    <script>
-        myApp = angular.module('myApp', []);
-	myApp.controller('MyController', function MyController($scope) {
-		alert("controller called");
-		$scope.name = "micscov2";
-	});
-    </script>
-	<h1>Dummy School</h1>
-	<div>
-	</div>
-	<input type="text" ng-model="name" />
+<body ng-app="myApp" ng-controller="MyController" onload="unhidez('homeView')">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron">
+          <h1>Sine Public School</h1>
+          <p>A place to learn, interact, play so as to build complete building of character.</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="inProgress()">Enroll Now</a></p>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-sm-2">
+      <ul class="nav nav-stacked">
+        <li role="presentation"><a href="#" onclick="unhidez('homeView')">Home</a></li>
+        <li role="presentation"><a href="#" onclick="unhidez('upcomingEventsView')">Upcomig Events</a></li>
+        <li role="presentation"><a href="#" onclick="unhidez('promotionsView')">Promotions</a></li>
+        <li role="presentation"><a href="#" onclick="unhidez('aboutView')">About</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-10">
+      <div id="homeView">
+        <table class="table-striped table-bordered">
+          <thead>
+            <td>Class</td>
+            <td>Zone</td>
+            <td>Taken by</td>
+            <td>Next class</td>
+            <td>Holiday</td>
+          </thead>
+
+
+            <tr>
+              <td>I</td>
+              <td>Day</td>
+              <td>Mr. X</td>
+              <td>July 10</td>
+              <td>Sunday</td>
+            </tr>
+
+
+              <tr>
+                <td>II</td>
+                <td>Day</td>
+                <td>Mr. Y</td>
+                <td>July 8</td>
+                <td>Monday</td>
+              </tr>
+
+
+                <tr>
+                  <td>III</td>
+                  <td>Night</td>
+                  <td>Mr. Z</td>
+                  <td>July 15</td>
+                  <td>Tuesday</td>
+                </tr>
+        </table>
+      </div>
+
+      <div id="upcomingEventsView">
+        <img class="img-circle" src="{% static 'images/unnamed.png' %}" height="200px" widht="300px" />
+      </div>
+
+      <div id="promotionsView">
+        <ul>
+          <li>
+              <h3>Enrollment Open for I-II<span class="label label-default">New</span></h3>
+          </li>
+
+
+          <li>
+              <h3>Donate <span class="label label-default">Old</span></h3>
+          </li>
+
+          <li>
+              <h3>Upcoming Events<span class="label label-default">Click here</span></h3>
+          </li>
+
+          <li>
+              <h3>Maintenance upgrade <span class="label label-default">Important**</span></h3>
+          </li>
+        </ul>
+
+      </div>
+
+      <div id="aboutView">
+        <div class="page-header">
+          <h1><small>@copyright 2016</small></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
