@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<link href="{%  static 'bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet" media="screen">
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/angular.min.js' %}"></script>
+</head>
+
+
+<body ng-app="myApp" ng-controller="MyController">
+    <script>
+        myApp = angular.module('myApp', []);
+	myApp.controller('MyController', function MyController($scope) {
+		alert("controller called");
+		$scope.name = "micscov2";
+	});
+    </script>
+	<h1>Dummy School</h1>
+	<div>
+	</div>
+	<input type="text" ng-model="name" />
+</body>
+
+</html>
